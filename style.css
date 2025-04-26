@@ -1,0 +1,444 @@
+/* General reset and base styles */
+body {
+    font-family: 'Poppins', sans-serif; /* A slightly more rounded, friendly font */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8; /* Very light grey background */
+    color: #37474f; /* Dark grey-blue text */
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+/* Header styles */
+header {
+    background-color: #fff; /* White header */
+    color: #37474f;
+    padding: 1.5em 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #37474f;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease-in-out;
+    padding: 0.5em 0;
+    position: relative; /* For the underline effect */
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #f06292; /* Pink accent color */
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #f06292;
+    transform: translateY(-2px);
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+}
+
+/* Main content area */
+main {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Hero section - Dynamic Background with Text Reveal */
+.hero {
+    min-height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #e1bee7, #fce4ec); /* Soft gradient */
+    border-radius: 12px;
+    margin-bottom: 40px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden; /* Clip the background animation */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('path/to/your/abstract-bg.svg') center center repeat; /* Subtle pattern */
+    opacity: 0.1;
+    animation: subtlePattern 20s linear infinite;
+}
+
+@keyframes subtlePattern {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-20%, -20%);
+    }
+}
+
+.hero-content {
+    position: relative; /* Bring text above the background */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.5s forwards; /* Text reveal animation */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    color: #37474f;
+    margin-bottom: 0.4em;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: #546e7a;
+    margin-bottom: 1.5em;
+    line-height: 1.8;
+}
+
+.button {
+    display: inline-block;
+    background-color: #f06292; /* Pink accent */
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #e91e63; /* Darker pink */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Projects section - Tiled Layout with Image Overlays */
+.projects-section {
+    padding: 80px 20px;
+    background-color: #f9fbe7; /* Light yellow-green */
+}
+
+.projects-section h2 {
+    text-align: center;
+    font-size: 2.8em;
+    color: #37474f;
+    margin-bottom: 40px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative; /* For image overlay */
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img {
+    width: 100%;
+    display: block;
+    height: auto;
+    border-radius: 12px 12px 0 0;
+    transition: transform 0.4s ease-in-out;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    padding: 25px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.project-card:hover .project-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-info h3 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 0.3em;
+}
+
+.project-info p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.project-card a.project-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* Make the whole card clickable */
+    z-index: 1; /* Ensure it's above the image and info */
+}
+
+/* About section - Centered Content */
+.about-page {
+    background-color: #f0f8ff; /* Light blue background for the page */
+    padding-top: 80px; /* Add some top padding to avoid header overlap */
+    padding-bottom: 60px;
+    text-align: center; /* Center align text within the entire page */
+}
+
+.about-page .about-section {
+    max-width: 900px; /* Adjust max-width as needed */
+    margin: 60px auto; /* Center the section horizontally */
+    padding: 60px; /* Increase padding inside the section */
+    border-radius: 15px; /* More pronounced rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* Stronger shadow */
+    background-color: #fff; /* Ensure content area has white background */
+    text-align: center; /* Center the text within the about section */
+}
+
+.about-page .about-section h2 {
+    font-size: 4em; /* Even bigger main heading */
+    margin-bottom: 40px;
+    color: #2e3b4e; /* Darker text color */
+}
+
+.about-page .about-content {
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally along the cross-axis */
+    gap: 40px; /* Adjust gap between content blocks */
+}
+
+.about-page .about-content .left-column {
+    width: 100%; /* Make the left column take full width */
+    /* text-align: left; Remove this to allow centering from the parent */
+    opacity: 0;
+    transform: translateY(20px); /* Adjust initial transform for vertical centering */
+    animation: fadeInUp 0.8s ease-out 0.3s forwards; /* Use fadeInUp for a vertical reveal */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-page .about-content .left-column h3 {
+    font-size: 2.5em; /* Bigger subheading */
+    color: #f06292; /* Accent color */
+    margin-bottom: 25px;
+    font-weight: 700;
+    /* text-align: center; Keep this to center the heading */
+}
+
+.about-page .about-content .left-column p {
+    font-size: 1.3em; /* Larger paragraph text */
+    color: #495e73; /* Slightly darker paragraph color */
+    line-height: 2; /* More line spacing */
+    margin-bottom: 25px;
+    text-align: center; /* Center the paragraph text */
+}
+
+.about-page .about-content .left-column ul {
+    list-style: disc;
+    padding-left: 0; /* Remove left padding for centering */
+    margin-top: 20px;
+    margin-bottom: 30px; /* Add some space below the list */
+    text-align: center; /* Center the list items */
+}
+
+.about-page .about-content .left-column ul li {
+    font-size: 1.2em;
+    color: #576f72;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    display: inline-block; /* Allows centering */
+    text-align: left; /* Align text within each list item to the left */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.about-page .about-content .left-column ul li strong {
+    font-weight: 700;
+    color: #2e3b4e;
+}
+
+/* Style for the Tech Stack Expertise list */
+.about-page .about-content .left-column .tech-stack {
+    margin-top: 30px;
+    text-align: center; /* Center the tech stack section */
+}
+
+.about-page .about-content .left-column .tech-stack h4 {
+    font-size: 1.8em;
+    color: #f06292;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.about-page .about-content .left-column .tech-stack p {
+    font-size: 1.2em;
+    color: #576f72;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+/* Contact Section - Animated Icons with Subtle Background */
+.contact-section {
+    padding: 80px 40px;
+    background-color: #eceff1; /* Light grey-blue */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.8em;
+    color: #37474f;
+    margin-bottom: 30px;
+}
+
+.contact-section p {
+    color: #546e7a;
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+.contact-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.contact-links li a {
+    color: #f06292;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2em;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    transition: color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.contact-links li a:hover {
+    color: #e91e63;
+    transform: scale(1.05);
+}
+
+.contact-links li a i {
+    font-size: 1.8em;
+    color: #37474f;
+    transition: transform 0.3s ease-in-out;
+}
+
+.contact-links li a:hover i {
+    transform: rotate(360deg) scale(1.1);
+}
+
+.contact-links li a:hover i.fa-linkedin {
+    color: #0077b5;
+}
+
+.contact-links li a:hover i.fa-twitter {
+    color: #1da1f2;
+}
+
+/* Footer styles */
+footer {
+    background-color: #37474f;
+    color: #fff;
+    text-align: center;
+    padding: 1.5em 0;
+    font-size: 0.9em;
+}
+
+/* Audio player style */
+audio#voiceover {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 220px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 12px;
+    opacity: 0.8;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+}
+
+audio#voiceover:hover {
+    opacity: 1;
+}
